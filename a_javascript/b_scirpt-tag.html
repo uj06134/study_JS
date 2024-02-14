@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>스크립트 태그</title>
+    </head>
+    <body>
+        <h2>마우스를 올려보세요</h2>
+        <hr />
+        <img
+            src="images/icon1.png"
+            width="200px"
+            onmouseover="over(this)"
+            onmouseout="out(this)"
+        />
+    </body>
+    <script>
+        function over(object) {
+            object.src = "images/icon4.png";
+        }
+        function out(object) {
+            object.src = "images/icon5.png";
+        }
+    </script>
+</html>

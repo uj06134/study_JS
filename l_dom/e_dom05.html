@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>객체를 동적으로 생성, 삽입, 삭제</title>
+    </head>
+    <body>
+        <p>DOM 트리에 동적으로 객체를 삽입할 수 있다.</p>
+        <p>
+            createElement("태그명"), appendChild("태그객체"),
+            removeChild("태그객체")
+        </p>
+        <p>위 3개의 메소드를 이용해서 새로운 객체를 생성, 삽입, 삭제한다.</p>
+        <a id="create" href="">DIV 생성</a>
+    </body>
+    <script>
+        const a = document.querySelector("#create");
+        // 색깔들의 list 선언
+        const colors = new Array(
+            "yellow",
+            "red",
+            "blue",
+            "green",
+            "skyblue",
+            "orange",
+            "pink"
+        );
+
+        // 전역객체
+        globalThis.number = 0;
+        a.onclick = (e) => {
+            // preventDefault: a 태그를 눌렀을때도 href 링크로 이동하지 않게 할 경우
+            e.preventDefault();
+            // 색깔들의 리스트 인덱스를 랜덤하게 하나씩 가져옴 (Math.random은 소숫점을 가져오므로 floor로 버림)
+            const i = Math.floor(Math.random() * colors.length);
+            const newDiv = document.createElement("div");
+            newDiv.innerText = `새로 생성된 DIV${++number} 태그입니다.`;
+            newDiv.style.backgroundColor = colors[i];
+
+            newDiv.onclick = (e) => {
+                // parentElement(삭제할노드의_부모노드).removeChild(삭제할노드)
+                e.target.parentElement.removeChild(e.target);
+            };
+            // appendChild: node객체만 자식 요소로 추가
+            document.body.appendChild(newDiv);
+        };
+    </script>
+</html>
